@@ -73,6 +73,7 @@ public class ProductsGUI extends JFrame
     	pageNav.add(navProblems);
     	pageNav.add(navCustDetails);
     	
+    	fileClose.addActionListener(navigationListener);
     	navHome.addActionListener(navigationListener);
     	navComplaints.addActionListener(navigationListener);
     	navJoining.addActionListener(navigationListener);
@@ -120,6 +121,9 @@ public class ProductsGUI extends JFrame
 			    	cdgui.pack();
 
                     dispose();
+                }
+                if (e.getActionCommand().equals("Close")) {
+                    System.exit(0);
                 }
     		}
     	}
