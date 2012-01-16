@@ -20,6 +20,8 @@ public class ComplaintGUI
 	CustDetailsGUI cdgui;
 	
 	static NavigationListener navigationListener;	
+	static FetchCustHistListener fetchCustHistListener;
+	static AddComplaintListener addComplaintListener;
 	static JFrame frame;
 	static JMenuBar menuBar;
 	
@@ -30,7 +32,9 @@ public class ComplaintGUI
     public ComplaintGUI()
     { 	   	
 		//navigation inner class listener
-    	navigationListener = new NavigationListener();  	
+    	navigationListener = new NavigationListener();  
+    	fetchCustHistListener = new FetchCustHistListener();
+    	addComplaintListener = new AddComplaintListener();	
     }
     
     
@@ -157,7 +161,7 @@ public class ComplaintGUI
 		//newComplButton.addActionListener(navigationListener);
 		
 		
-		JButton custIdGoButton = new JButton("Fetch Complaint History");
+		JButton fetchCustHistButton = new JButton("Fetch Complaint History");
 		//c.ipady = 20;
 		c.weightx = 0.0;
 		c.gridx = 2;
@@ -166,8 +170,8 @@ public class ComplaintGUI
 		c.gridheight = 1;
 		//c.fill = GridBagConstraints.HORIZONTAL;
 		c.insets = new Insets(0,0,0,0);
-    	pane.add(custIdGoButton, c);
-		//newComplButton.addActionListener(navigationListener);
+    	pane.add(fetchCustHistButton, c);
+		fetchCustHistButton.addActionListener(fetchCustHistListener);
 		
 		
 	    
@@ -232,7 +236,7 @@ public class ComplaintGUI
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.insets = new Insets(0,0,0,0);
     	pane.add(newComplButton, c);
-		newComplButton.addActionListener(navigationListener);
+		newComplButton.addActionListener(addComplaintListener);
 		
  
 	
@@ -296,4 +300,23 @@ public class ComplaintGUI
                 }
     		}
     	}
+    	
+    	
+    class FetchCustHistListener implements ActionListener
+     {
+     	public void actionPerformed(ActionEvent ev)
+     	{
+	     	System.out.println("Fetching customer history...");
+			
+     	}
+     }
+     
+     class AddComplaintListener implements ActionListener
+     {
+     	public void actionPerformed(ActionEvent ev)
+     	{
+	     	System.out.println("Adding complaint...");
+			
+     	}
+     }
 }
