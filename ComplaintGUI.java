@@ -36,16 +36,18 @@ public class ComplaintGUI
     
     public static void addComponentsToPane(Container pane)
     {      	  	  	
-    	if (RIGHT_TO_LEFT)
+    	/*if (RIGHT_TO_LEFT)
     	{
             pane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-        }
+        }*/
  
         //text area
 		JTextArea complaintTextArea;
+		JTextArea readOnlyTextArea;
 		
 		//scroll pane
 		JScrollPane complaintScrollPane;
+		JScrollPane readOnlyScrollPane;
 		
 		//menus
 		JMenu fileMenu = new JMenu("File");
@@ -113,27 +115,27 @@ public class ComplaintGUI
 		c.gridwidth = 0;
 		c.gridheight = 1;
     	pane.add(menuBar, c);
-    	c.insets = new Insets(0,0,0,0);
+    	//c.insets = new Insets(0,0,0,0);
     	//menuBar.addActionListener(navigationListener); 
     	
 	 	//add buttons
     	JButton homeComplButton = new JButton("Home");
 	    c.ipady = 20;
-	    //c.weightx = 1;
-    	c.gridx = 1;
+	    c.weightx = 0.0;
+    	c.gridx = 0;
 		c.gridy = 1;
 		c.gridwidth = 1;
 		c.gridheight = 1;
 		//c.fill = GridBagConstraints.HORIZONTAL;
-		c.insets = new Insets(0,0,0,0);
+		//c.insets = new Insets(0,0,0,0);
     	pane.add(homeComplButton, c);   
     	homeComplButton.addActionListener(navigationListener); 	
     	
 
 		JLabel custIdLbl = new JLabel("Customer ID:");
 		c.ipady = 20;
-		c.weightx = 0.5;
-		c.gridx = 1;
+		c.weightx = 0.1;
+		c.gridx = 0;
 		c.gridy = 2;
 		c.gridwidth = 1;
 		c.gridheight = 1;
@@ -144,12 +146,12 @@ public class ComplaintGUI
 		
 		JTextField custIdTxt = new JTextField("");
 		c.ipady = 20;
-		c.weightx = 0.5;
-		c.gridx = 2;
+		c.weightx = 1.0;
+		c.gridx = 1;
 		c.gridy = 2;
 		c.gridwidth = 1;
 		c.gridheight = 1;
-		c.insets = new Insets(0,-205,0,287);
+		c.insets = new Insets(0,0,0,0);
 		//c.fill = GridBagConstraints.HORIZONTAL;
     	pane.add(custIdTxt, c);
 		//newComplButton.addActionListener(navigationListener);
@@ -157,20 +159,47 @@ public class ComplaintGUI
 		
 		JButton custIdGoButton = new JButton("Fetch Complaint History");
 		//c.ipady = 20;
-		c.weightx = 0.2;
-		c.gridx = 3;
+		c.weightx = 0.0;
+		c.gridx = 2;
 		c.gridy = 2;
 		c.gridwidth = 1;
 		c.gridheight = 1;
 		//c.fill = GridBagConstraints.HORIZONTAL;
-		c.insets = new Insets(0,-205,0,287);
+		c.insets = new Insets(0,0,0,0);
     	pane.add(custIdGoButton, c);
 		//newComplButton.addActionListener(navigationListener);
 		
 		
 	    
 	    //add text area
-	    complaintTextArea = new JTextArea("Add comments here.", 10, 30);
+	    readOnlyTextArea = new JTextArea("Previous Complaints History", 10, 40);
+	    readOnlyTextArea.setEditable(false);
+		readOnlyTextArea.setFont(new Font("Serif", Font.ITALIC, 16));
+		readOnlyTextArea.setLineWrap(true);
+		readOnlyTextArea.setWrapStyleWord(true);
+		
+		readOnlyScrollPane = new JScrollPane(readOnlyTextArea);
+		readOnlyScrollPane.setVerticalScrollBarPolicy(
+        JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		//complaintScrollPane.setPreferredSize(new Dimension(400, 200));
+		//c.fill = GridBagConstraints.VERTICAL;
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 0.0;
+		//c.ipady = 200;
+		//c.ipadx = 200;
+		c.gridx = 0;
+		c.gridy = 3;
+		c.gridwidth = 3;
+		c.gridheight = 1;
+		c.insets = new Insets(0,0,10,0);
+		pane.add(readOnlyScrollPane, c);
+		//textArea.getDocument().addDocumentListener(this);
+	    
+	    
+	    
+	    
+	    //add text area
+	    complaintTextArea = new JTextArea("Add comments here.", 10, 40);
 		complaintTextArea.setFont(new Font("Serif", Font.ITALIC, 16));
 		complaintTextArea.setLineWrap(true);
 		complaintTextArea.setWrapStyleWord(true);
@@ -181,26 +210,27 @@ public class ComplaintGUI
 		//complaintScrollPane.setPreferredSize(new Dimension(400, 200));
 		//c.fill = GridBagConstraints.VERTICAL;
 		c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 1.0;
+		c.weightx = 0.0;
 		//c.ipady = 200;
-		c.ipadx = 200;
+		//c.ipadx = 200;
 		c.gridx = 0;
-		c.gridy = 3;
+		c.gridy = 4;
 		c.gridwidth = 3;
-		c.gridheight = 0;
+		c.gridheight = 1;
 		c.insets = new Insets(0,0,0,0);
 		pane.add(complaintScrollPane, c);
 		//textArea.getDocument().addDocumentListener(this);
 		
+		
 		JButton newComplButton = new JButton("Add Complaint");
 		//c.ipady = 20;
 		//c.weightx = 1;
-		c.gridx = 3;
-		c.gridy = 4;
-		c.gridwidth = 1;
+		c.gridx = 0;
+		c.gridy = 5;
+		c.gridwidth = 3;
 		c.gridheight = 1;
 		c.fill = GridBagConstraints.HORIZONTAL;
-		c.insets = new Insets(290,-600,0,500);
+		c.insets = new Insets(0,0,0,0);
     	pane.add(newComplButton, c);
 		newComplButton.addActionListener(navigationListener);
 		
