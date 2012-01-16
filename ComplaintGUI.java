@@ -99,6 +99,7 @@ public class ComplaintGUI
     	pageNav.add(navProblems);
     	pageNav.add(navCustDetails);
     	
+    	fileClose.addActionListener(navigationListener);
     	navHome.addActionListener(navigationListener);
     	navProducts.addActionListener(navigationListener);
     	navJoining.addActionListener(navigationListener);
@@ -297,6 +298,9 @@ public class ComplaintGUI
 			    	cdgui.pack();
 
                     frame.dispose();
+                }
+                if (e.getActionCommand().equals("Close")) {
+                    System.exit(0);
                 }
     		}
     	}
