@@ -73,6 +73,8 @@ public class CustDetailsGUI extends JFrame
     	pageNav.add(navProblems);
     	pageNav.add(navProducts);
     	
+    	
+    	fileClose.addActionListener(navigationListener);
     	navHome.addActionListener(navigationListener);
     	navComplaints.addActionListener(navigationListener);
     	navJoining.addActionListener(navigationListener);
@@ -120,6 +122,9 @@ public class CustDetailsGUI extends JFrame
 			    	pgui.pack();
 
                     dispose();
+                }
+                if (e.getActionCommand().equals("Close")) {
+                    System.exit(0);
                 }
     		}
     	}
