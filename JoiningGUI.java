@@ -101,6 +101,7 @@ public JoiningGUI()
     pageNav.add(navProblems);
     pageNav.add(navCustDetails);
     
+    fileClose.addActionListener(navigationListener);
     navHome.addActionListener(navigationListener);
     navComplaints.addActionListener(navigationListener);
     navProducts.addActionListener(navigationListener);
@@ -224,6 +225,9 @@ public JoiningGUI()
 					cdgui.pack();
 
                     dispose();
+                }
+                if (e.getActionCommand().equals("Close")) {
+                    System.exit(0);
                 }
      		}
      	}
