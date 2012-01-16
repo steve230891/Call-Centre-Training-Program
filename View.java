@@ -51,9 +51,9 @@ CustDetailsGUI cdgui;
     public View()
     {
      this.setResizable(false);
-this.setLocationRelativeTo(null);
-this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-this.setVisible(true);
+	this.setLocationRelativeTo(null);
+	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	this.setVisible(true);
      this.setLayout(new GridLayout(5,5));
     
      //listener object
@@ -61,7 +61,7 @@ this.setVisible(true);
 
      //menu bar
      JMenuBar menuBar = new JMenuBar();
-this.setJMenuBar(menuBar);
+	this.setJMenuBar(menuBar);
      menuBar.add(fileMenu);
      menuBar.add(pageNav);
      menuBar.add(fileHelpMenu);
@@ -77,6 +77,8 @@ this.setJMenuBar(menuBar);
      pageNav.add(navCustDetails);
     
      //add listeners to menu items
+     fileClose.addActionListener(navigationListener);
+     
      navComplaints.addActionListener(navigationListener);
      navProducts.addActionListener(navigationListener);
      navJoining.addActionListener(navigationListener);
@@ -147,6 +149,9 @@ custDetailsButton.addActionListener(navigationListener);
 					cdgui.pack();
 
                     dispose();
+                }
+                if (e.getActionCommand().equals("Close")) {
+                    System.exit(0);
                 }
      }
      }
