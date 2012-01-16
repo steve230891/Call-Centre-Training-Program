@@ -75,6 +75,7 @@ public class ProblemsGUI extends JFrame
     	pageNav.add(navJoining);
     	pageNav.add(navCustDetails);
     	
+    	fileClose.addActionListener(navigationListener);
     	navHome.addActionListener(navigationListener);
     	navComplaints.addActionListener(navigationListener);
     	navProducts.addActionListener(navigationListener);
@@ -122,6 +123,9 @@ public class ProblemsGUI extends JFrame
 			    	cdgui.pack();
 
                     dispose();
+                }
+                if (e.getActionCommand().equals("Close")) {
+                    System.exit(0);
                 }
     		}
     	}
